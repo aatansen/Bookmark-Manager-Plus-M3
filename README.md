@@ -1,4 +1,5 @@
 <div align="center">
+<img src="./icon/icon128.png" alt="Bookmark Manager Plus M3 icon" width="96" height="96" />
 <h1>Bookmark Manager Plus M3</h1>
 <em>An All in One advanced bookmark manager with modern UI and advanced search capabilities</em>
 </div>
