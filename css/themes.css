@@ -1,0 +1,186 @@
+/*------------------------------------------------*/
+/* Modern Theme System with CSS Custom Properties */
+/*------------------------------------------------*/
+
+/* Dark Theme (Default) */
+:root,
+html[data-theme="dark"] {
+	/* Primary Background Colors */
+	--bg-primary: #1e1e2e;
+	--bg-secondary: #2a2a3e;
+	--bg-tertiary: #363650;
+	--bg-hover: #3d3d57;
+	--bg-active: #4a4a6a;
+
+	/* Text Colors */
+	--text-primary: #e0e0e6;
+	--text-secondary: #b4b4c8;
+	--text-tertiary: #8a8a9e;
+	--text-disabled: #5a5a6e;
+	--text-link: #7dd3c0;
+	--text-link-hover: #a8e6d7;
+
+	/* Border Colors */
+	--border-primary: #404056;
+	--border-secondary: #4a4a60;
+	--border-hover: #5a5a70;
+	--border-focus: #6eb6ff;
+
+	/* Accent Colors */
+	--accent-primary: #6eb6ff;
+	--accent-secondary: #8b5cf6;
+	--accent-success: #10b981;
+	--accent-warning: #f59e0b;
+	--accent-error: #ef4444;
+	--accent-info: #3b82f6;
+
+	/* Selection Colors */
+	--selection-bg: #3d5a80;
+	--selection-border: #4a6fa5;
+	--selection-text: #ffffff;
+
+	/* Hover States */
+	--hover-bg: rgba(110, 182, 255, 0.1);
+	--hover-border: rgba(110, 182, 255, 0.3);
+
+	/* Shadow Colors */
+	--shadow-sm: rgba(0, 0, 0, 0.3);
+	--shadow-md: rgba(0, 0, 0, 0.4);
+	--shadow-lg: rgba(0, 0, 0, 0.5);
+
+	/* Scrollbar Colors */
+	--scrollbar-track: #2a2a3e;
+	--scrollbar-thumb: #4a4a6a;
+	--scrollbar-thumb-hover: #5a5a7a;
+
+	/* Input Colors */
+	--input-bg: #2a2a3e;
+	--input-border: #404056;
+	--input-focus-bg: #363650;
+	--input-focus-border: #6eb6ff;
+	--input-placeholder: #6a6a7e;
+
+	/* Button Colors */
+	--button-bg: #3d3d57;
+	--button-border: #4a4a60;
+	--button-hover-bg: #4a4a6a;
+	--button-hover-border: #5a5a70;
+	--button-active-bg: #363650;
+
+	/* Modal/Dialog Colors */
+	--modal-overlay: rgba(0, 0, 0, 0.6);
+	--modal-bg: #2a2a3e;
+	--modal-border: #404056;
+
+	/* Menu Colors */
+	--menu-bg: #2a2a3e;
+	--menu-border: #404056;
+	--menu-item-hover: #3d3d57;
+
+	/* Group/Separator Colors */
+	--separator-color: #404056;
+	--group-bg: #2a2a3e;
+	--group-border: #363650;
+
+	/* Special States */
+	--partial-selected-bg: rgba(110, 182, 255, 0.15);
+	--full-selected-bg: rgba(110, 182, 255, 0.25);
+	--cut-opacity: 0.4;
+}
+
+/* Light Theme */
+html[data-theme="light"] {
+	/* Primary Background Colors */
+	--bg-primary: #ffffff;
+	--bg-secondary: #f8f9fa;
+	--bg-tertiary: #e9ecef;
+	--bg-hover: #f1f3f5;
+	--bg-active: #dee2e6;
+
+	/* Text Colors */
+	--text-primary: #212529;
+	--text-secondary: #495057;
+	--text-tertiary: #6c757d;
+	--text-disabled: #adb5bd;
+	--text-link: #0d6efd;
+	--text-link-hover: #0a58ca;
+
+	/* Border Colors */
+	--border-primary: #dee2e6;
+	--border-secondary: #ced4da;
+	--border-hover: #adb5bd;
+	--border-focus: #0d6efd;
+
+	/* Accent Colors */
+	--accent-primary: #0d6efd;
+	--accent-secondary: #6f42c1;
+	--accent-success: #198754;
+	--accent-warning: #fd7e14;
+	--accent-error: #dc3545;
+	--accent-info: #0dcaf0;
+
+	/* Selection Colors */
+	--selection-bg: #cfe2ff;
+	--selection-border: #9ec5fe;
+	--selection-text: #052c65;
+
+	/* Hover States */
+	--hover-bg: rgba(13, 110, 253, 0.08);
+	--hover-border: rgba(13, 110, 253, 0.25);
+
+	/* Shadow Colors */
+	--shadow-sm: rgba(0, 0, 0, 0.1);
+	--shadow-md: rgba(0, 0, 0, 0.15);
+	--shadow-lg: rgba(0, 0, 0, 0.2);
+
+	/* Scrollbar Colors */
+	--scrollbar-track: #f8f9fa;
+	--scrollbar-thumb: #adb5bd;
+	--scrollbar-thumb-hover: #868e96;
+
+	/* Input Colors */
+	--input-bg: #ffffff;
+	--input-border: #ced4da;
+	--input-focus-bg: #ffffff;
+	--input-focus-border: #0d6efd;
+	--input-placeholder: #6c757d;
+
+	/* Button Colors */
+	--button-bg: #f8f9fa;
+	--button-border: #ced4da;
+	--button-hover-bg: #e9ecef;
+	--button-hover-border: #adb5bd;
+	--button-active-bg: #dee2e6;
+
+	/* Modal/Dialog Colors */
+	--modal-overlay: rgba(0, 0, 0, 0.4);
+	--modal-bg: #ffffff;
+	--modal-border: #dee2e6;
+
+	/* Menu Colors */
+	--menu-bg: #ffffff;
+	--menu-border: #dee2e6;
+	--menu-item-hover: #f8f9fa;
+
+	/* Group/Separator Colors */
+	--separator-color: #dee2e6;
+	--group-bg: #f8f9fa;
+	--group-border: #e9ecef;
+
+	/* Special States */
+	--partial-selected-bg: rgba(13, 110, 253, 0.1);
+	--full-selected-bg: rgba(13, 110, 253, 0.2);
+	--cut-opacity: 0.4;
+}
+
+/* Smooth theme transitions */
+html {
+	transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+* {
+	transition: background-color 0.2s ease,
+		border-color 0.2s ease,
+		color 0.2s ease,
+		box-shadow 0.2s ease;
+}

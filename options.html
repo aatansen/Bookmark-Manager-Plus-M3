@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Bookmark Manager Plus M3 - Options</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="lib/alertify/themes/alertify.core.css">
+	<link rel="stylesheet" href="lib/alertify/themes/alertify.default.css">
+	<link rel="stylesheet" href="css/themes.css">
+	<link rel="stylesheet" href="css/switch.css">
+	<link rel="stylesheet" href="css/options.css">
+	<script src="lib/jquery/jquery-1.12.4.min.js"></script>
+	<script src="lib/jquery/jquery-ui.min.js"></script>
+	<script src="lib/alertify/alertify.js"></script>
+	<script src="js/constant.js"></script>
+	<script src="js/strings.js"></script>
+	<script src="js/util.js"></script>
+	<script src="js/options.js"></script>
+</head>
+
+<body>
+	<div class="options-container">
+		<header class="options-header">
+			<h1><i class="fa fa-cog"></i> Bookmark Manager Plus M3</h1>
+			<p class="subtitle">Customize your bookmark management experience</p>
+		</header>
+
+		<div class="options-content">
+			<!-- Theme Section -->
+			<div class="option-card">
+				<div class="option-header">
+					<span class="option-icon"><i class="fa fa-paint-brush"></i></span>
+					<h2>Appearance</h2>
+				</div>
+				<div class="option-body">
+					<div class="option-row">
+						<label for="theme-selector">Theme</label>
+						<select id="theme-selector">
+							<option value="dark">Dark</option>
+							<option value="light">Light</option>
+						</select>
+					</div>
+				</div>
+			</div>
+
+			<!-- Badge Display Section -->
+			<div class="option-card">
+				<div class="option-header">
+					<span class="option-icon"><i class="fa fa-hashtag"></i></span>
+					<h2>Badge Display</h2>
+				</div>
+				<div class="option-body">
+					<div class="option-row">
+						<label for="badge-display-mode">Display Mode</label>
+						<select id="badge-display-mode">
+							<option value="none">None</option>
+							<option value="domain">Same Domain Bookmark Count</option>
+							<option value="total">Total Bookmark Count</option>
+							<option value="today">Today Bookmark Count</option>
+						</select>
+					</div>
+				</div>
+			</div>
+
+			<!-- Behavior Section -->
+			<div class="option-card">
+				<div class="option-header">
+					<span class="option-icon"><i class="fa fa-bolt"></i></span>
+					<h2>Behavior</h2>
+				</div>
+				<div class="option-body">
+					<div class="option-row">
+						<label for="real-time-apply-switch">Real-Time Apply</label>
+						<span id="real-time-apply-switch">
+							<div class="switch switch-round switch-off">
+								<div class="switch-toggle"></div>
+							</div>
+						</span>
+					</div>
+					<div class="option-row">
+						<label for="open-in-new-tab-switch">Always Open in New Tab</label>
+						<span id="open-in-new-tab-switch">
+							<div class="switch switch-round switch-off">
+								<div class="switch-toggle"></div>
+							</div>
+						</span>
+					</div>
+					<div class="option-row">
+						<label for="warning-count">Warning Count</label>
+						<input type="number" id="warning-count" step="100" min="100">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<footer class="options-footer">
+			<button id="save" class="btn btn-primary"><i class="fa fa-save"></i> Save Settings</button>
+			<button id="reset" class="btn btn-secondary"><i class="fa fa-refresh"></i> Reset to Defaults</button>
+		</footer>
+	</div>
+</body>
+
+</html>

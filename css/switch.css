@@ -1,0 +1,68 @@
+/*------------------------------------------------*/
+/* Modern Switch Component with Theme Support */
+/*------------------------------------------------*/
+
+.switch {
+	position: relative;
+	display: inline-block;
+	font-size: 1.6em;
+	font-weight: bold;
+	color: var(--text-tertiary);
+	text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.1);
+	height: 13px;
+	padding: 6px 6px 5px 6px;
+	border: 1px solid var(--border-primary);
+	border-radius: 20px;
+	background: var(--button-bg);
+	box-shadow: 0px 0px 4px var(--shadow-sm), inset 0px 1px 3px 0px var(--shadow-sm);
+	cursor: pointer;
+	float: right;
+	transition: all 0.2s ease;
+}
+
+.switch:hover {
+	border-color: var(--border-hover);
+	background: var(--button-hover-bg);
+}
+
+.switch .switch-toggle {
+	position: absolute;
+	width: 37px;
+	height: 25px;
+	border: 1px solid var(--border-secondary);
+	border-radius: 20px;
+	background: linear-gradient(to bottom, var(--bg-tertiary) 0%, var(--bg-primary) 100%);
+	box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.1), 0 2px 4px var(--shadow-sm);
+	z-index: 999;
+	transition: all 0.2s ease-in-out;
+}
+
+/* Round Switch */
+.switch.switch-round {
+	padding: 0px 13px;
+	border-radius: 40px;
+	vertical-align: middle;
+	margin: 0 7px;
+}
+
+.switch.switch-round .switch-toggle {
+	border-radius: 40px;
+	width: 11px;
+	height: 11px;
+}
+
+.switch.switch-round.switch-on {
+	background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+	border-color: var(--accent-primary);
+}
+
+.switch.switch-round.switch-on .switch-toggle {
+	left: 0%;
+	background: #ffffff;
+	box-shadow: 0 2px 6px var(--shadow-md);
+}
+
+.switch.switch-round.switch-off .switch-toggle {
+	left: 52%;
+	background: var(--bg-tertiary);
+}

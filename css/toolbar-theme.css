@@ -1,0 +1,46 @@
+/* ------------------------------------------------ */
+/* Toolbar / Filter Dialog Styling With Theme Support */
+/* ------------------------------------------------ */
+
+.tool-container {
+  background-color: var(--menu-bg) !important;
+  border: 1px solid var(--border-primary) !important;
+  color: var(--text-primary) !important;
+  box-shadow: 0 4px 12px var(--shadow-md) !important;
+  border-radius: 8px !important;
+}
+
+.tool-container .arrow {
+  border-color: transparent transparent var(--border-primary) !important;
+  top: -14px !important;
+  /* Adjust if needed based on border width */
+}
+
+/* Adjust arrow position/color based on placement if needed, 
+   assuming 'bottom' position based on init.js */
+.tool-container.tool-top .arrow {
+  border-color: var(--border-primary) transparent transparent !important;
+}
+
+.tool-container.tool-bottom .arrow {
+  border-color: transparent transparent var(--border-primary) !important;
+}
+
+.tool-container.tool-left .arrow {
+  border-color: transparent transparent transparent var(--border-primary) !important;
+}
+
+.tool-container.tool-right .arrow {
+  border-color: transparent var(--border-primary) transparent transparent !important;
+}
+
+/* Ensure text inside spans is visible */
+.tool-container span {
+  color: var(--text-primary) !important;
+}
+
+/* Style the switches inside the toolbar */
+.tool-container .switch {
+  border-color: var(--border-secondary) !important;
+  background: var(--bg-tertiary) !important;
+}
