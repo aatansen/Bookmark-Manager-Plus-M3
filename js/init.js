@@ -71,6 +71,9 @@ var BookmarkManagerPlus = {
 		warning: DEFAULT_WARNING_COUNT,
 		apply: true,
 		openInNewTab: true,
+
+		sameDomain: DEFAULT_SAME_DOMAIN,
+		today: DEFAULT_TODAY,
 	},
 
 	/* 
@@ -186,6 +189,9 @@ var BookmarkManagerPlus = {
 	 *  event queue being processed at the end of refreshTree()
 	 */
 	refreshTreeQueueEvents: [],
+
+	currentTabUrl: "",
+	currentTabDomain: "",
 };
 
 var bmp = BookmarkManagerPlus;
@@ -262,6 +268,9 @@ $(document).ready(function () {
 			apply: true,
 			warning: DEFAULT_WARNING_COUNT,
 			openInNewTab: true,
+
+			sameDomain: DEFAULT_SAME_DOMAIN,
+			today: DEFAULT_TODAY,
 
 			// array
 			history: [],
@@ -340,6 +349,12 @@ $(document).ready(function () {
 
 			// incremental
 			initSwitch('incremental', $('.icon-incremental-search').find('.switch'));
+
+			// sameDomain
+			initSwitch('sameDomain', $('.icon-same-domain').find('.switch'));
+
+			// today
+			initSwitch('today', $('.icon-today').find('.switch'));
 
 			// search
 			bmp.options.search = items.search;
@@ -512,6 +527,16 @@ function init(callback) {
 	$leftFrame.get(0).addEventListener('mouseover', function (e) {
 		bmp.currFrame = '#left-frame';
 	}, true);
+
+	// Fetch current tab info
+	chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+		if (tabs && tabs[0]) {
+			bmp.currentTabUrl = tabs[0].url;
+			var reg = /:\/\/[^/]*/;
+			var match = reg.exec(tabs[0].url);
+			bmp.currentTabDomain = match ? match[0] : "";
+		}
+	});
 
 
 	// Unfocus the search editor on mousedown
@@ -2926,12 +2951,28 @@ function createIconToolbars() {
 	$container.append($label).append($roundSwitch);
 	$addition.append($container);
 
+	$addition.append('<hr>');
+
+	var $container = $('<span>').addClass('icon-same-domain');
+	var $label = $('<span>').text("Same Domain");
+	var $roundSwitch = createRoundSwitch();
+	$container.append($label).append($roundSwitch);
+	$addition.append($container);
+
+	$addition.append('<br>');
+
+	var $container = $('<span>').addClass('icon-today');
+	var $label = $('<span>').text("Today");
+	var $roundSwitch = createRoundSwitch();
+	$container.append($label).append($roundSwitch);
+	$addition.append($container);
+
 
 	$('#icon-filter').toolbar({
 		position: "bottom",
 		toolbarCss: {
 			width: "155px",
-			height: "180px",
+			height: "235px",
 		},
 		addition: $addition,
 	}).on("toolbarItemClick", function (e, item) {
@@ -3102,6 +3143,44 @@ function createIconToolbars() {
 		});
 
 		$(this).toggleClass('switch-on switch-off');
+	});
+
+	$('.icon-same-domain .switch').on('click', function () {
+
+		if ($(this).hasClass('switch-on')) {
+			bmp.options.sameDomain = false;
+		} else {
+			bmp.options.sameDomain = true;
+		}
+
+		StorageManager.set({
+			sameDomain: bmp.options.sameDomain,
+		});
+
+		$(this).toggleClass('switch-on switch-off');
+
+		if (bmp.options.apply) {
+			search(true);
+		}
+	});
+
+	$('.icon-today .switch').on('click', function () {
+
+		if ($(this).hasClass('switch-on')) {
+			bmp.options.today = false;
+		} else {
+			bmp.options.today = true;
+		}
+
+		StorageManager.set({
+			today: bmp.options.today,
+		});
+
+		$(this).toggleClass('switch-on switch-off');
+
+		if (bmp.options.apply) {
+			search(true);
+		}
 	});
 
 

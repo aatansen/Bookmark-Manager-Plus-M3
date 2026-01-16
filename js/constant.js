@@ -13,6 +13,8 @@ const DEFAULT_ICON_FOLDER_MODE = "children";
 const DEFAULT_ICON_SORT_MODE = "hierarchy";
 const DEFAULT_WARNING_COUNT = 500;
 const DEFAULT_BADGE_DISPLAY_MODE = "domain";
+const DEFAULT_SAME_DOMAIN = false;
+const DEFAULT_TODAY = false;
 const DEFAULT_THEME = "dark";
 
 

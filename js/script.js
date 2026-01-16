@@ -1240,7 +1240,7 @@ function _search(isManual) {
 
 		// when click a search icon or enter
 		if (isManual) {
-			if ((isTitle && isWhole) || timeSet || isScope) {
+			if ((isTitle && isWhole) || timeSet || isScope || bmp.options.sameDomain || bmp.options.today) {
 				bmp.isEmptySearchStarted = true;
 			} else {
 				bmp.isEmptySearchStarted = false;
@@ -1251,7 +1251,7 @@ function _search(isManual) {
 			// 
 		} else {
 			if (bmp.isEmptySearchStarted) {
-				if ((!isTitle || !isWhole) && !timeSet && !isScope) {
+				if ((!isTitle || !isWhole) && !timeSet && !isScope && !bmp.options.sameDomain && !bmp.options.today) {
 					bmp.isEmptySearchStarted = false;
 					return skipHistory();
 				}
@@ -1432,6 +1432,16 @@ function _search(isManual) {
 
 		if (results[i].dateAdded < startTime) continue;
 		if (results[i].dateAdded > endTime) continue;
+
+		if (bmp.options.today) {
+			var todayStart = new Date().setHours(0, 0, 0, 0);
+			var todayEnd = new Date().setHours(24, 0, 0, 0);
+			if (results[i].dateAdded < todayStart || results[i].dateAdded > todayEnd) continue;
+		}
+
+		if (bmp.options.sameDomain) {
+			if (results[i].url == undefined || bmp.currentTabDomain == "" || !results[i].url.includes(bmp.currentTabDomain)) continue;
+		}
 
 		data.push(results[i]);
 		count++;
