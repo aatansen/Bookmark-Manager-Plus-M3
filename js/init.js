@@ -371,6 +371,11 @@ $(document).ready(function () {
 			// month
 			initSwitch('month', $('.icon-month').find('.switch'));
 
+			if (bmp.options.today || bmp.options.yesterday || bmp.options.week || bmp.options.month || bmp.options.sameDomain || (bmp.options.title && bmp.options.whole)) {
+				bmp.isSearching = true;
+				bmp.isEmptySearchStarted = true;
+			}
+
 			// search
 			bmp.options.search = items.search;
 			$('#icon-search-mode').removeClass('fa-basic fa-lg fa-search-normal fa-circle-thin fa-question-circle-o fa-registered');
@@ -482,13 +487,34 @@ $(document).ready(function () {
 
 			// exploreHierarchy
 			bmp.exploreHierarchy = items.exploreHierarchy;
-			explore({
-				id: bmp.exploreHierarchy.right.id,
-				hierarchy: bmp.exploreHierarchy.right.hierarchy,
-				targetFrame: '#right-frame',
-			});
 
-			bmp.initialized = true;
+			function finalizeInitialization() {
+				if (bmp.isSearching) {
+					search(true);
+				} else {
+					explore({
+						id: bmp.exploreHierarchy.right.id,
+						hierarchy: bmp.exploreHierarchy.right.hierarchy,
+						targetFrame: '#right-frame',
+					});
+				}
+				bmp.initialized = true;
+			}
+
+			if (bmp.options.sameDomain && bmp.currentTabDomain === "") {
+				// If sameDomain is active but currentTabDomain isn't ready, fetch it now
+				chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+					if (tabs && tabs[0]) {
+						bmp.currentTabUrl = tabs[0].url;
+						var reg = /:\/\/[^/]*/;
+						var match = reg.exec(tabs[0].url);
+						bmp.currentTabDomain = match ? match[0] : "";
+					}
+					finalizeInitialization();
+				});
+			} else {
+				finalizeInitialization();
+			}
 		});
 
 	});
