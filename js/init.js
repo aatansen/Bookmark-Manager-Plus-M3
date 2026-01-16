@@ -74,6 +74,9 @@ var BookmarkManagerPlus = {
 
 		sameDomain: DEFAULT_SAME_DOMAIN,
 		today: DEFAULT_TODAY,
+		yesterday: DEFAULT_YESTERDAY,
+		week: DEFAULT_WEEK,
+		month: DEFAULT_MONTH,
 	},
 
 	/* 
@@ -271,6 +274,9 @@ $(document).ready(function () {
 
 			sameDomain: DEFAULT_SAME_DOMAIN,
 			today: DEFAULT_TODAY,
+			yesterday: DEFAULT_YESTERDAY,
+			week: DEFAULT_WEEK,
+			month: DEFAULT_MONTH,
 
 			// array
 			history: [],
@@ -355,6 +361,15 @@ $(document).ready(function () {
 
 			// today
 			initSwitch('today', $('.icon-today').find('.switch'));
+
+			// yesterday
+			initSwitch('yesterday', $('.icon-yesterday').find('.switch'));
+
+			// week
+			initSwitch('week', $('.icon-week').find('.switch'));
+
+			// month
+			initSwitch('month', $('.icon-month').find('.switch'));
 
 			// search
 			bmp.options.search = items.search;
@@ -2967,12 +2982,36 @@ function createIconToolbars() {
 	$container.append($label).append($roundSwitch);
 	$addition.append($container);
 
+	$addition.append('<br>');
+
+	var $container = $('<span>').addClass('icon-yesterday');
+	var $label = $('<span>').text("Yesterday");
+	var $roundSwitch = createRoundSwitch();
+	$container.append($label).append($roundSwitch);
+	$addition.append($container);
+
+	$addition.append('<br>');
+
+	var $container = $('<span>').addClass('icon-week');
+	var $label = $('<span>').text("Week");
+	var $roundSwitch = createRoundSwitch();
+	$container.append($label).append($roundSwitch);
+	$addition.append($container);
+
+	$addition.append('<br>');
+
+	var $container = $('<span>').addClass('icon-month');
+	var $label = $('<span>').text("Month");
+	var $roundSwitch = createRoundSwitch();
+	$container.append($label).append($roundSwitch);
+	$addition.append($container);
+
 
 	$('#icon-filter').toolbar({
 		position: "bottom",
 		toolbarCss: {
 			width: "155px",
-			height: "235px",
+			height: "320px",
 		},
 		addition: $addition,
 	}).on("toolbarItemClick", function (e, item) {
@@ -3174,6 +3213,63 @@ function createIconToolbars() {
 
 		StorageManager.set({
 			today: bmp.options.today,
+		});
+
+		$(this).toggleClass('switch-on switch-off');
+
+		if (bmp.options.apply) {
+			search(true);
+		}
+	});
+
+	$('.icon-yesterday .switch').on('click', function () {
+
+		if ($(this).hasClass('switch-on')) {
+			bmp.options.yesterday = false;
+		} else {
+			bmp.options.yesterday = true;
+		}
+
+		StorageManager.set({
+			yesterday: bmp.options.yesterday,
+		});
+
+		$(this).toggleClass('switch-on switch-off');
+
+		if (bmp.options.apply) {
+			search(true);
+		}
+	});
+
+	$('.icon-week .switch').on('click', function () {
+
+		if ($(this).hasClass('switch-on')) {
+			bmp.options.week = false;
+		} else {
+			bmp.options.week = true;
+		}
+
+		StorageManager.set({
+			week: bmp.options.week,
+		});
+
+		$(this).toggleClass('switch-on switch-off');
+
+		if (bmp.options.apply) {
+			search(true);
+		}
+	});
+
+	$('.icon-month .switch').on('click', function () {
+
+		if ($(this).hasClass('switch-on')) {
+			bmp.options.month = false;
+		} else {
+			bmp.options.month = true;
+		}
+
+		StorageManager.set({
+			month: bmp.options.month,
 		});
 
 		$(this).toggleClass('switch-on switch-off');

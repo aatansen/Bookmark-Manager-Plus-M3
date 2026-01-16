@@ -1240,7 +1240,7 @@ function _search(isManual) {
 
 		// when click a search icon or enter
 		if (isManual) {
-			if ((isTitle && isWhole) || timeSet || isScope || bmp.options.sameDomain || bmp.options.today) {
+			if ((isTitle && isWhole) || timeSet || isScope || bmp.options.sameDomain || bmp.options.today || bmp.options.yesterday || bmp.options.week || bmp.options.month) {
 				bmp.isEmptySearchStarted = true;
 			} else {
 				bmp.isEmptySearchStarted = false;
@@ -1252,7 +1252,7 @@ function _search(isManual) {
 			// 
 		} else {
 			if (bmp.isEmptySearchStarted) {
-				if ((!isTitle || !isWhole) && !timeSet && !isScope && !bmp.options.sameDomain && !bmp.options.today) {
+				if ((!isTitle || !isWhole) && !timeSet && !isScope && !bmp.options.sameDomain && !bmp.options.today && !bmp.options.yesterday && !bmp.options.week && !bmp.options.month) {
 					bmp.isEmptySearchStarted = false;
 					bmp.isSearching = false;
 					refresh();
@@ -1440,6 +1440,34 @@ function _search(isManual) {
 			var todayStart = new Date().setHours(0, 0, 0, 0);
 			var todayEnd = new Date().setHours(24, 0, 0, 0);
 			if (results[i].dateAdded < todayStart || results[i].dateAdded > todayEnd) continue;
+		}
+
+		if (bmp.options.yesterday) {
+			var yesterdayStart = new Date();
+			yesterdayStart.setDate(yesterdayStart.getDate() - 1);
+			yesterdayStart.setHours(0, 0, 0, 0);
+			var yesterdayEnd = new Date();
+			yesterdayEnd.setDate(yesterdayEnd.getDate() - 1);
+			yesterdayEnd.setHours(24, 0, 0, 0);
+			if (results[i].dateAdded < yesterdayStart || results[i].dateAdded > yesterdayEnd) continue;
+		}
+
+		if (bmp.options.week) {
+			var weekStart = new Date();
+			weekStart.setDate(weekStart.getDate() - 6);
+			weekStart.setHours(0, 0, 0, 0);
+			var weekEnd = new Date();
+			weekEnd.setHours(24, 0, 0, 0);
+			if (results[i].dateAdded < weekStart || results[i].dateAdded > weekEnd) continue;
+		}
+
+		if (bmp.options.month) {
+			var monthStart = new Date();
+			monthStart.setDate(monthStart.getDate() - 30);
+			monthStart.setHours(0, 0, 0, 0);
+			var monthEnd = new Date();
+			monthEnd.setHours(24, 0, 0, 0);
+			if (results[i].dateAdded < monthStart || results[i].dateAdded > monthEnd) continue;
 		}
 
 		if (bmp.options.sameDomain) {
