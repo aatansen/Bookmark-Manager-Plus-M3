@@ -1244,7 +1244,8 @@ function _search(isManual) {
 				bmp.isEmptySearchStarted = true;
 			} else {
 				bmp.isEmptySearchStarted = false;
-				alert(str_alert_empty_query);
+				bmp.isSearching = false;
+				refresh();
 				return skipHistory();
 			}
 
@@ -1253,6 +1254,8 @@ function _search(isManual) {
 			if (bmp.isEmptySearchStarted) {
 				if ((!isTitle || !isWhole) && !timeSet && !isScope && !bmp.options.sameDomain && !bmp.options.today) {
 					bmp.isEmptySearchStarted = false;
+					bmp.isSearching = false;
+					refresh();
 					return skipHistory();
 				}
 			} else {
