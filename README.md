@@ -12,10 +12,11 @@
   - `chrome://extensions/`
 - Enable Developer mode
 - Now click on `Load unpacked` and select unzipped folder
+- For any bugs report [here](https://github.com/aatansen/Bookmark-Manager-Plus-M3/issues)
 
 ### Extension Features
 
-- **M3 Version (v1.0.0.0)**
+- **M3 Version (v1.0.0.0+)**
 
   - **Manifest V3 Compliant**: Fully aligned with Chrome’s latest extension requirements
   - **Refined User Interface**: Cleaner layout with improved usability and visual consistency
